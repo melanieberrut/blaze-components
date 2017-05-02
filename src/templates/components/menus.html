@@ -1,0 +1,32 @@
+{% macro menu(data, modifier) %}
+
+	<ul class="c-card c-card--menu u-high">
+		{% for item in data %}
+			{% if item.divider %}
+				<li class="c-card__item c-card__item--divider">{{ item.name }}</li>
+			{% elseif item.active %}
+				<li class="c-card__item c-card__item--active">{{ item.name }}</li>
+			{% elseif item.disabled %}
+				<li class="c-card__item c-card__item--disabled">{{ item.name }}</li>
+			{% else %}
+				<li class="c-card__item">{{ item.name }}</li>
+			{% endif %}
+			
+		{% endfor %}
+	</ul>
+
+{% endmacro %}
+
+{% macro combo(data, modifier) %}
+	<div class="c-card c-card--menu u-high">
+		{% for item in data %}
+			{% if item.divider %}
+				<div class="c-card__item c-card__item--divider">{{ item.label }}</div>
+			{% else %}
+				<label for="{{ item.id }}" class="c-card__item c-field c-field--choice">
+					<input id="{{ item.id }}" type="checkbox">{{ item.label }}
+				</label>
+			{% endif %}
+		{% endfor %}
+	</div>
+{% endmacro %}

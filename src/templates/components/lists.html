@@ -1,0 +1,9 @@
+{# Default: unordered #}
+
+{% macro list(items, modifier) %}
+	<ul class="c-list {{ modifier }}">
+		{% for item in items %}
+			<li class="c-list__item">{{ item.item }}</li>
+		{% endfor %}
+	</ul>
+{% endmacro %}

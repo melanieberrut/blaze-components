@@ -1,0 +1,20 @@
+{% macro button(disabled, modifier) %}
+	{% if disabled === true %}
+		{% set disabledAttr = 'disabled="true"' %}
+	{% endif %}
+	<button {{ disabledAttr }} class="c-button {{ modifier }}">Button</button>
+{% endmacro %}
+
+{% macro input(disabled, modifier) %}
+	{% if disabled === true %}
+		{% set disabledAttr = 'disabled="true"' %}
+	{% endif %}
+	<input {{ disabledAttr }} type="button" class="c-button  {{ modifier }}" value="Input">
+{% endmacro %}
+
+{% macro link(disabled, modifier) %}
+	{% if disabled === true %}
+		{% set disabledAttr = 'disabled="true"' %}
+	{% endif %}
+	<a {{ disabledAttr }} class="c-button  {{ modifier }}">Link</a>
+{% endmacro %}

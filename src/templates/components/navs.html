@@ -1,0 +1,30 @@
+{% macro nav(data, modifier) %}
+	<ul class="c-nav {{ modifier }}">
+		{% for item in data %}
+
+			{% if item.content %}
+				<div class="c-nav__content">{{ item.name }}</div>
+			{% else %}
+				
+				{% if item.active %}
+					{% if item.direction %}
+					<li class="c-nav__item c-nav__item--{{ item.direction }} c-nav__item--active">
+					{% else %}
+					<li class="c-nav__item c-nav__item--active">
+					{% endif %}
+						<a class="c-nav__link" href="{{ item.href }}">{{ item.name }}</a>
+					</li>
+				{% else %}
+					{% if item.direction %}
+					<li class="c-nav__item c-nav__item--{{ item.direction }}">
+					{% else %}
+					<li class="c-nav__item">
+					{% endif %}
+						<a class="c-nav__link" href="{{ item.href }}">{{ item.name }}</a>
+					</li>
+				{% endif %}
+			{% endif %}
+		{% endfor %}
+	</ul>
+
+{% endmacro %}

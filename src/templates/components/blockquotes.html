@@ -1,0 +1,10 @@
+{% macro blockquote(modifier, quote, source) %}
+<blockquote class="c-blockquote {{ modifier }}">
+  <div class="c-blockquote__body">
+    {{ quote }}
+  </div>
+  <footer class="c-blockquote__footer">
+    - {{ source }}
+  </footer>
+</blockquote>
+{% endmacro %}

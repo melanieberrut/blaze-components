@@ -1,0 +1,10 @@
+{# By default, alignment right #}
+
+{% macro tooltip(label, modifier, tooltip) %}
+	{% if modifier %}
+		{% set modifier = modifier %}
+	{% else %}
+		{% set modifier = 'c-tooltip--right' %}
+	{% endif %}
+	<span class="c-badge c-tooltip {{ modifier }}" aria-label="{{ tooltip }}">{{ label }}</span>
+{% endmacro %}

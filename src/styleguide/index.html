@@ -1,0 +1,493 @@
+<!-- index.nunjucks -->
+{% extends "styleguide-layout.html" %}
+
+{% import 'components/alerts.html' as ALERTS %}
+{% import 'components/avatars.html' as AVATARS %}
+{% import 'components/accordions.html' as ACCORDIONS %}
+{% import 'components/badges.html' as BADGES %}
+{% import 'components/breadcrumbs.html' as BREADCRUMBS %}
+{% import 'components/blockquotes.html' as BLOCKQUOTES %}
+{% import 'components/bubbles.html' as BUBBLES %}
+{% import 'components/buttons.html' as BUTTONS %}
+{% import 'components/buttons-groups.html' as BUTTONSGROUPS %}
+{% import 'components/cards.html' as CARDS %}
+{% import 'components/headings.html' as HEADINGS %}
+{% import 'components/inputs.html' as INPUTS %}
+{% import 'components/lists.html' as LISTS %}
+{% import 'components/menus.html' as MENUS %}
+{% import 'components/navs.html' as NAVS %}
+{% import 'components/paginations.html' as PAGINATIONS %}
+{% import 'components/tables.html' as TABLES %}
+{% import 'components/tabs.html' as TABS %}
+{% import 'components/tags.html' as TAGS %}
+{% import 'components/tooltips.html' as TOOLTIPS %}
+
+
+{% block content %}
+
+<style>
+	.c-code {
+		margin: -.125em;
+		padding: .25em .25em .125em;
+		background-color: #e5eaec;
+		color: #111;
+		display: inline;
+	}
+	.o-grid--demo.o-grid {
+	    border: 2px solid #ff69b4;
+	}
+	.o-grid--demo .o-grid__cell {
+	    border: 2px solid #00bfff;
+	    background-color: #b2f5b5;
+	}
+	.o-grid-key--grid {
+		color: #ff69b4;
+	}
+
+	.o-grid-key--grid-cell {
+		color: #00bfff;
+	}
+
+	.o-grid-key--padding {
+		color: #66bb6a;
+	}
+	.o-grid-text {
+		background-color: #fff;
+	}
+
+</style>
+
+<div class="components">
+	
+	<h1>Components</h1>
+
+	<div id="menus">
+		<h1>Navs</h1>
+
+		<h2>Default</h2>
+		{{NAVS.nav(navs.nav)}}
+
+		<h2>Inline</h2>
+		{{NAVS.nav(navs.navInline, modifier='c-nav--inline')}}
+
+		<h2><a href="http://blazecss.com/components/navs/#absolute-positions">Absolute positions</a></h2>
+		<h2><a href="http://blazecss.com/components/navs/#fixed-position">Fixed position</a></h2>
+
+	</div>
+
+	<div id="menus">
+		<h1>Menus</h1>
+		<h2>Default</h2>
+		{{MENUS.menu(menus.single)}}
+		<h2>Combo</h2>
+		{{MENUS.combo(menus.combo)}}
+	</div>
+
+	<div id="headings">
+		{{HEADINGS.h1("Heading 1")}}
+		{{HEADINGS.h2("Heading 2")}}
+		{{HEADINGS.h3("Heading 3")}}
+		{{HEADINGS.h4("Heading 4")}}
+		{{HEADINGS.h5("Heading 5")}}
+		{{HEADINGS.h6("Heading 6")}}
+	</div>
+
+	<div id="cards">
+		<h1>CARDS</h1>
+		<h2>Default</h2>
+		{{CARDS.card(cards.default)}}
+		{{CARDS.card(cards.headerFooter, headerModifier='c-card__item--brand', footerModifier='c-card__item--error', dividerModifier='c-card__item--warning')}}
+
+		<h2>Shadows</h2>
+		{{CARDS.card(cards.headerOnly, shadow='small')}}
+		<br>
+		{{CARDS.card(cards.headerOnly, shadow='medium')}}
+		<br>
+		{{CARDS.card(cards.headerOnly, shadow='large')}}
+	</div>
+
+	<div id="avatars">
+		<h1>Avatars</h1>
+		<h2>Default</h2>
+		{{AVATARS.avatar(img='https://i1.wallpaperscraft.com/image/giraffe_face_africa_110065_300x300.jpg')}}
+		<h2>Sizes</h2>
+		{{AVATARS.avatar(img='https://i1.wallpaperscraft.com/image/giraffe_face_africa_110065_300x300.jpg', modifier='u-xsmall')}}
+		{{AVATARS.avatar(img='https://i1.wallpaperscraft.com/image/giraffe_face_africa_110065_300x300.jpg', modifier='u-small')}}
+		{{AVATARS.avatar(img='https://i1.wallpaperscraft.com/image/giraffe_face_africa_110065_300x300.jpg', modifier='u-medium')}}
+		{{AVATARS.avatar(img='https://i1.wallpaperscraft.com/image/giraffe_face_africa_110065_300x300.jpg', modifier='u-large')}}
+		{{AVATARS.avatar(img='https://i1.wallpaperscraft.com/image/giraffe_face_africa_110065_300x300.jpg', modifier='u-xlarge')}}
+		{{AVATARS.avatar(img='https://i1.wallpaperscraft.com/image/giraffe_face_africa_110065_300x300.jpg', modifier='u-super')}}
+
+	</div>
+
+	<div id="tags">
+		<h1>Accordion</h1>
+		{{ACCORDIONS.accordion(accordions.default)}}
+	</div>
+
+	<div id="blockquotes">
+		<h1>Blockquotes</h1>
+		{{BLOCKQUOTES.blockquote(quote='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae voluptatibus, quia!', source='Lorem Ipsum')}}
+	</div>
+
+	<div id="tooltips">
+		<h1>Tooltips</h1>
+		{{TOOLTIPS.tooltip(label='tooltip right here', tooltip='This is something in a tooltip')}}
+		{{TOOLTIPS.tooltip(label='tooltip top here', tooltip='This is something in a tooltip', modifier='c-tooltip--top')}}
+		{{TOOLTIPS.tooltip(label='tooltip bottom here', tooltip='This is something in a tooltip', modifier='c-tooltip--bottom')}}
+		{{TOOLTIPS.tooltip(label='tooltip left here', tooltip='This is something in a tooltip', modifier='c-tooltip--left')}}
+	</div>
+
+	<div id="tags">
+		<h1>Tags</h1>
+		{{TAGS.tag(tags.lists)}}
+
+		<h2>Search</h2>
+		<div style="min-height: 150px;">
+			{{TAGS.tagSearch(tags.search)}}
+		</div>
+	</div>
+
+	<div id="tabs">
+		<h1>Tabs</h1>
+		{{TABS.tabs(tabs)}}
+
+		<h1>Colours</h1>
+		{{TABS.tabs(tabs, modifier='c-tabs--brand')}}
+		{{TABS.tabs(tabs, modifier='c-tabs--info')}}
+		{{TABS.tabs(tabs, modifier='c-tabs--warning')}}
+		{{TABS.tabs(tabs, modifier='c-tabs--success')}}
+		{{TABS.tabs(tabs, modifier='c-tabs--error')}}
+
+	</div>
+
+	<div id="tables">
+		<h1>Tables</h1>
+		{{TABLES.table(table)}}
+
+		<h2>Stripped</h2>
+		{{TABLES.table(table, modifier='c-table--striped')}}
+
+		<h2>Clickable</h2>
+		{{TABLES.table(table, modifier='c-table--clickable')}}
+
+		<h2>Stripped</h2>
+		{{TABLES.table(table, modifier='c-table--striped')}}
+
+		<h2>With DIV</h2>
+		{{TABLES.div(table)}}
+		<br>
+		{{TABLES.div(table, modifier='c-table--striped')}}
+
+	</div>
+
+	<div id="paginations">
+		<h1>Pagination</h1>
+
+		<h2>Default</h2>
+		{{PAGINATIONS.pagination(pagination.default)}}
+		
+		<h2>No First/Last</h2>
+		{{PAGINATIONS.pagination(pagination.custom)}}
+	</div>
+	
+	<div id="lists">
+		<h1>Lists</h1>
+
+		<h2>Un-ordered</h2>
+		{{LISTS.list(lists)}}
+
+		<h2>Ordered</h2>
+		{{LISTS.list(lists, modifier='c-list--ordered')}}
+
+		<h2>Un-styled</h2>
+		{{LISTS.list(lists, modifier='c-list--unstyled')}}
+
+		<h2>Inline</h2>
+		{{LISTS.list(lists, modifier='c-list--inline')}}
+
+	</div>
+
+	<div id="inputs">
+		<h1>Default</h1>
+		{{INPUTS.input(placeholder='Placeholder text...')}}
+		<br>
+		{{INPUTS.textarea(placeholder='textarea..')}}
+		<br>
+		{{INPUTS.select(text='Select')}}
+
+
+		<h2>Colours</h2>
+		{{INPUTS.input(modifier='c-field--success',placeholder='Placeholder text...')}}
+		<br>
+		{{INPUTS.input(modifier='c-field--error',placeholder='Placeholder text...')}}
+		<br>
+		{{INPUTS.input(disabled=true,placeholder='Placeholder text...')}}
+
+		<h2>Icons</h2>
+		{{INPUTS.input(placeholder='Placeholder text...', icon1='fa fa-fw fa-calendar')}}
+		<br>
+		{{INPUTS.input(placeholder='Placeholder text...', icon1='fa fa-fw fa-calendar', iconDirection1='o-field--icon-right')}}
+		<br>
+		{{INPUTS.input(modifier='c-field--success', placeholder='Placeholder text...', icon1='fa fa-fw fa-calendar', iconDirection1='o-field--icon-left', icon2='fa fa-fw fa-check', iconDirection2='o-field--icon-right')}}
+
+		<h2>Colours</h2>
+		{{INPUTS.input(modifier='u-xsmall',placeholder='u-xsmall')}}
+		{{INPUTS.input(modifier='u-small',placeholder='u-small')}}
+		{{INPUTS.input(modifier='u-medium',placeholder='u-medium')}}
+		{{INPUTS.input(modifier='u-large',placeholder='u-large')}}
+		{{INPUTS.input(modifier='u-xlarge',placeholder='u-xlarge')}}
+		{{INPUTS.input(modifier='u-super',placeholder='u-super')}}
+
+		<h2>Groups</h2>
+		{{BUTTONSGROUPS.group(hasInput=true, btnModifier2='c-button--brand c-button--active')}}
+		<br>
+		{{BUTTONSGROUPS.group(hasInput=true, inputDirection='right', btnModifier2='c-button--brand c-button--active')}}
+		<br>
+
+		<h1>Checkboxes</h1>
+		{{INPUTS.checkbox("Tick the box")}}
+
+		<h1>Fieldset</h1>
+		{{INPUTS.fieldset(fieldsets)}}
+
+		<h1>Form Element</h1>
+		{{INPUTS.formElement(formElement.nickname)}}
+		{{INPUTS.formElement(formElement.realname)}}
+			
+		<h2>Hints</h2>
+		{{INPUTS.formElement(formElement.message)}}
+
+		<h2>Toggle</h2>
+		{{INPUTS.toggle(formElement.toggle)}}
+		<h3>Variants</h3>
+		{{INPUTS.toggle(formElement.toggle, modifier='c-toggle--brand')}}
+		{{INPUTS.toggle(formElement.toggle, modifier='c-toggle--info')}}
+		{{INPUTS.toggle(formElement.toggle, modifier='c-toggle--warning')}}
+		{{INPUTS.toggle(formElement.toggle, modifier='c-toggle--success')}}
+		{{INPUTS.toggle(formElement.toggle, modifier='c-toggle--error')}}
+		{{INPUTS.toggle(formElement.toggle, disabled)}}
+
+	</div>
+
+	<div id="buttons">
+
+		<h1>Buttons</h1>
+
+		<h2>Regular</h2>
+		{{BUTTONS.button()}}
+		{{BUTTONS.input()}}
+		{{BUTTONS.link()}}
+
+		<h2>Variants</h2>
+		{{BUTTONS.button(modifier='c-button--brand')}}
+		{{BUTTONS.button(modifier='c-button--info')}}
+		{{BUTTONS.button(modifier='c-button--warning')}}
+		{{BUTTONS.button(modifier='c-button--success')}}
+		{{BUTTONS.button(modifier='c-button--error')}}
+
+		<h2>Disabled</h2>
+		{{BUTTONS.button(disabled=true)}}
+		{{BUTTONS.input(disabled=true)}}
+		{{BUTTONS.link(disabled=true)}}
+
+
+		<h2>Sizes</h2>
+		{{BUTTONS.button(modifier='u-xsmall')}}
+		{{BUTTONS.button(modifier='u-small')}}
+		{{BUTTONS.button(modifier='u-medium')}}
+		{{BUTTONS.button(modifier='u-large')}}
+		{{BUTTONS.button(modifier='u-xlarge')}}
+		{{BUTTONS.button(modifier='u-super')}}
+
+		<h2>Shapes</h2>
+		{{BUTTONS.button(modifier='c-button--rounded')}}
+		{{BUTTONS.button(modifier='c-button--ghost c-button--rounded')}}
+
+		<h2>Full width</h2>
+		{{BUTTONS.button(modifier='u-xsmall c-button--block')}}
+		<br />
+		{{BUTTONS.button(modifier='u-small c-button--block')}}
+		<br />
+		{{BUTTONS.button(modifier='u-medium c-button--block')}}
+		<br />
+		{{BUTTONS.button(modifier='u-large c-button--block')}}
+		<br />
+		{{BUTTONS.button(modifier='u-xlarge c-button--block')}}
+		<br />
+		{{BUTTONS.button(modifier='u-super c-button--block')}}
+
+		<h2>Ghosts</h2>
+		{{BUTTONS.button(modifier='c-button--ghost u-xsmall')}}
+		{{BUTTONS.button(modifier='c-button--ghost u-small')}}
+		{{BUTTONS.button(modifier='c-button--ghost u-medium')}}
+		{{BUTTONS.button(modifier='c-button--ghost u-large')}}
+		{{BUTTONS.button(modifier='c-button--ghost u-xlarge')}}
+		{{BUTTONS.button(modifier='c-button--ghost u-super')}}
+
+		<h3>Ghosts colors</h3>
+		{{BUTTONS.button(modifier='c-button--ghost')}}
+		{{BUTTONS.button(modifier='c-button--ghost-brand')}}
+		{{BUTTONS.button(modifier='c-button--ghost-info')}}
+		{{BUTTONS.button(modifier='c-button--ghost-warning')}}
+		{{BUTTONS.button(modifier='c-button--ghost-success')}}
+		{{BUTTONS.button(modifier='c-button--ghost-error')}}
+
+		<h2>States</h2>
+		{{BUTTONSGROUPS.group(btnModifier1='c-button--brand', btnModifier2='c-button--brand c-button--active')}}
+		{{BUTTONSGROUPS.group(btnModifier1='c-button--info', btnModifier2='c-button--info c-button--active')}}
+		{{BUTTONSGROUPS.group(btnModifier1='c-button--warning', btnModifier2='c-button--warning c-button--active')}}
+		{{BUTTONSGROUPS.group(btnModifier1='c-button--success', btnModifier2='c-button--success c-button--active')}}
+		{{BUTTONSGROUPS.group(btnModifier1='c-button--error', btnModifier2='c-button--error c-button--active')}}
+		<br>
+		{{BUTTONSGROUPS.group(btnModifier1='c-button--ghost-brand', btnModifier2='c-button--ghost-brand c-button--active')}}
+		{{BUTTONSGROUPS.group(btnModifier1='c-button--ghost-info', btnModifier2='c-button--ghost-info c-button--active')}}
+		{{BUTTONSGROUPS.group(btnModifier1='c-button--ghost-warning', btnModifier2='c-button--ghost-warning c-button--active')}}
+		{{BUTTONSGROUPS.group(btnModifier1='c-button--ghost-success', btnModifier2='c-button--ghost-success c-button--active')}}
+		{{BUTTONSGROUPS.group(btnModifier1='c-button--ghost-error', btnModifier2='c-button--ghost-error c-button--active')}}
+	</div>
+	<div id="buttons-groups">	
+		<h1>Buttons Groups</h1>
+		{{BUTTONSGROUPS.group(btnModifier2='c-button--brand')}}
+		{{BUTTONSGROUPS.group(btnModifier2='c-button--brand', groupModifier='c-button-group--rounded')}}
+
+		<h2>Shapes</h2>
+		{{BUTTONSGROUPS.group(btnModifier2='c-button--brand')}}
+		{{BUTTONSGROUPS.group(btnModifier1='c-button--brand', btnModifier2='c-button--brand', groupModifier='c-button-group--rounded')}}
+
+	</div>
+	<div id="alerts">
+		<h1>Alerts</h1>
+
+		<h1>Default</h1>
+		{{ALERTS.alert(modifier='')}}
+
+		<h2>Variants</h2>
+		{{ALERTS.alert(modifier='c-alert--brand')}}
+		{{ALERTS.alert(modifier='c-alert--info')}}
+		{{ALERTS.alert(modifier='c-alert--warning')}}
+		{{ALERTS.alert(modifier='c-alert--success')}}
+		{{ALERTS.alert(modifier='c-alert--error')}}
+
+		<h2>Dismissable</h2>
+		{{ALERTS.alertDismiss(modifier='')}}
+		{{ALERTS.alertDismiss(modifier='c-alert--brand')}}
+		{{ALERTS.alertDismiss(modifier='c-alert--info')}}
+		{{ALERTS.alertDismiss(modifier='c-alert--warning')}}
+		{{ALERTS.alertDismiss(modifier='c-alert--success')}}
+		{{ALERTS.alertDismiss(modifier='c-alert--error')}}
+	</div>
+	<div id="badges">
+		<h1>Default</h1>
+		{{BADGES.badge(modifier='')}}
+
+		<h2>Variants</h2>
+		{{BADGES.badge(modifier='')}}
+		{{BADGES.badge(modifier='c-badge--brand')}}
+		{{BADGES.badge(modifier='c-badge--info')}}
+		{{BADGES.badge(modifier='c-badge--warning')}}
+		{{BADGES.badge(modifier='c-badge--success')}}
+		{{BADGES.badge(modifier='c-badge--error')}}
+
+		<h2>Shapes</h2>
+		{{BADGES.badge(modifier='')}}
+		{{BADGES.badge(modifier='c-badge--brand c-badge--rounded')}}
+		{{BADGES.badge(modifier='c-badge--info c-badge--rounded')}}
+		{{BADGES.badge(modifier='c-badge--warning c-badge--rounded')}}
+		{{BADGES.badge(modifier='c-badge--success c-badge--rounded')}}
+		{{BADGES.badge(modifier='c-badge--error c-badge--rounded')}}
+
+		<h2>Ghost</h2>
+		{{BADGES.badge(modifier='')}}
+		{{BADGES.badge(modifier='c-badge--brand c-badge--ghost')}}
+		{{BADGES.badge(modifier='c-badge--info c-badge--ghost')}}
+		{{BADGES.badge(modifier='c-badge--warning c-badge--ghost')}}
+		{{BADGES.badge(modifier='c-badge--success c-badge--ghost')}}
+		{{BADGES.badge(modifier='c-badge--error c-badge--ghost')}}
+	</div>
+	<div id="breadcrumbs">
+		<!-- breadcrumbs from json -->
+		{{BREADCRUMBS.breadcrumb(breadcrumbs)}}
+	</div>
+	<div id="bubbles">
+		<div class="o-grid">
+			<div class="o-grid__cell--width-25">
+				{{BUBBLES.bubble()}}
+			</div>
+			<div class="o-grid__cell--width-25">
+				{{BUBBLES.bubble(modifier='c-bubble--right')}}
+			</div>
+			<div class="o-grid__cell--width-25">
+				{{BUBBLES.bubble(modifier='c-bubble--left')}}
+			</div>
+			<div class="o-grid__cell--width-25">
+				{{BUBBLES.bubble(modifier='c-bubble--bottom')}}
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="objects">
+	
+	<h1>Objects</h1>
+
+	<h2>Containers</h2>
+	<p>Containers provide media query screen width restrictions on your content.</p>
+	<code>
+		&lt;div class=&quot;o-container o-container--xsmall&quot;&gt;&lt;/div&gt; <br>
+		&lt;div class=&quot;o-container o-container--small&quot;&gt;&lt;/div&gt; <br>
+		&lt;div class=&quot;o-container o-container--medium&quot;&gt;&lt;/div&gt; <br>
+		&lt;div class=&quot;o-container o-container--large&quot;&gt;&lt;/div&gt; <br>
+		&lt;div class=&quot;o-container o-container--xlarge&quot;&gt;&lt;/div&gt; <br>
+		&lt;div class=&quot;o-container o-container--super&quot;&gt;&lt;/div&gt;
+	</code>
+	<p>See also:
+		<a href="http://blazecss.com/objects/containers/#sizes">Container sizes</a>, 
+		<a href="http://blazecss.com/objects/containers/#responsiveness">Responsiveness</a>
+	</p>
+
+
+	<h2>Grid</h2>
+	<h3>Syntax</h3>
+	<code>
+		&lt;div class=&quot;o-grid&quot;&gt; <br>
+		&nbsp;&nbsp;&nbsp;&lt;div class=&quot;o-grid__cell&quot;&gt;first&lt;/div&gt; <br>
+		&nbsp;&nbsp;&nbsp;&lt;div class=&quot;o-grid__cell&quot;&gt;second&lt;/div&gt; <br>
+		&nbsp;&nbsp;&nbsp;&lt;div class=&quot;o-grid__cell&quot;&gt;third&lt;/div&gt; <br>
+		&lt;/div&gt;
+	</code>
+	<p>Example:</p>
+	<div class="o-grid-key o-grid-key--grid">— grids are pink</div>
+	<div class="o-grid-key o-grid-key--grid-cell">— cells are blue</div>
+	<div class="o-grid-key o-grid-key--padding">— padding is green</div>
+	<div class="o-grid o-grid--demo"> 
+		<div class="o-grid__cell"><div class="o-grid-text">first</div></div> 
+		<div class="o-grid__cell"><div class="o-grid-text">second</div></div> 
+		<div class="o-grid__cell"><div class="o-grid-text">third</div></div> 
+	</div>
+	<h3>Widths</h3>
+	<p>Use the <span class="c-code">.o-grid__cell--width-xx</span> class to apply widths to your cells. If you add a width to one cell the other cells will automatically take up the rest of the space equally</p>
+	<code>
+	&lt;div class=&quot;o-grid&quot;&gt; <br>
+	&nbsp;&nbsp;&nbsp;&lt;div class=&quot;o-grid__cell o-grid__cell--width-50&quot;&gt;first&lt;/div&gt; <br>
+	&nbsp;&nbsp;&nbsp;&lt;div class=&quot;o-grid__cell&quot;&gt;second&lt;/div&gt; <br>
+	&nbsp;&nbsp;&nbsp;&lt;div class=&quot;o-grid__cell&quot;&gt;third&lt;/div&gt; <br>
+	&lt;/div&gt;
+	</code>
+	<div class="o-grid">
+		<div class="o-grid__cell o-grid__cell--width-50">first</div>
+		<div class="o-grid__cell">second</div>
+		<div class="o-grid__cell">third</div>
+	</div>
+
+
+</div>
+
+{% endblock %}
+
+{% block side %}
+	{% include "partials/styleguide-navigation.html" %}
+{% endblock %}
+
+
+

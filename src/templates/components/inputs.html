@@ -1,0 +1,145 @@
+{# Input icon by default on the left  #}
+
+{% macro input(modifier, type, placeholder, disabled, icon1, iconDirection1, icon2, iconDirection2) %}
+	{% if type %}
+		{% set inputType = type %}
+	{% else %}
+		{% set inputType = 'text' %}
+	{% endif %}
+
+	{% if disabled %}
+		{% set isDisabled = "disabled=true" %}
+	{% endif %}
+
+
+	{% if icon1 %}
+		{% set hasIcon1 = true %}
+	{% endif %}
+	
+	{% if iconDirection1 %}
+		{% set iconDirection1 = iconDirection1 %}
+		{% if 'right' in iconDirection1 %}
+			{% set iconDirection1Right = true %}
+		{% endif %}
+	{% else %}
+		{% if icon1 %}
+			{% set iconDirection1 = "o-field--icon-left" %}
+		{% endif %}
+	{% endif %}
+
+	{% if icon2 %}
+		{% set hasIcon2 = true %}
+	{% endif %}
+	
+	{% if iconDirection2 %}
+		{% set iconDirection2 = iconDirection2 %}
+	{% else %}
+		{% set iconDirection2 = "" %}
+	{% endif %}
+
+	
+
+	{% if iconDirection1 and not iconDirection2 %}
+		<div class="o-field {{ iconDirection1 }}">
+	{% elseif iconDirection2 and not iconDirection1 %}
+		<div class="o-field {{ iconDirection2 }}">
+	{% elseif iconDirection1 and iconDirection2 %}
+		<div class="o-field {{ iconDirection1 }} {{ iconDirection2 }}">
+	{% endif %}
+
+	{% if hasIcon1 and iconDirection1Right !== true %}
+		<i class="{{ icon1 }} c-icon"></i>
+	{% endif %}
+		<input class="c-field {{ modifier }}" placeholder="{{ placeholder }}" {{ isDisabled }} type="{{ inputType }}">
+
+	{% if hasIcon1 and iconDirection1Right === true %}
+  			<i class="{{ icon1 }} c-icon"></i>
+	{% endif %}
+	
+	{% if hasIcon2 %}
+		<i class="{{ icon2 }} c-icon"></i>
+	{% endif %}
+
+	{% if iconDirection1 and not iconDirection2 %}
+		</div>
+	{% elseif iconDirection2 and not iconDirection1 %}
+		</div>
+	{% elseif iconDirection1 and iconDirection2 %}
+		</div>
+	{% endif %}
+
+{% endmacro %}
+
+{% macro checkbox(text) %}
+	<label class="c-field c-field--choice">
+		<input type="checkbox"> {{ text }}
+	</label>
+{% endmacro %}
+
+{% macro radio(text, name) %}
+	<label class="c-field c-field--choice">
+		<input name="{{ name }}" type="radio"> {{ text }}
+	</label>
+{% endmacro %}
+
+{% macro fieldset(data) %}
+	<fieldset class="o-fieldset">
+		<legend class="o-fieldset__legend">{{ data.legend }}</legend>
+		{% for field in data.fields %}
+			
+			<label class="c-field c-field--choice">
+				{% if field.active %}
+				<input type="radio" checked="checked" name="{{ field.name }}">
+				{% else %}
+				<input type="radio" name="{{ field.name }}">
+				{% endif %}
+				{{field.label}}
+			</label>
+
+		{% endfor %}
+	</fieldset>
+{% endmacro %}
+
+{% macro formElement(data) %}
+	{% if data.placeholder === true %}
+		{% set placeholder = data.label %}
+	{% elseif data.placeholder !== 'true' %}
+		{% set placeholder = data.placeholder %}
+	{% endif %}
+	<div class="o-form-element">
+		<label class="c-label" for="{{ data.id }}">{{ data.label }}</label>
+		<input id="{{ data.id }}" placeholder="{{ placeholder }}" class="c-field">
+
+		{% if data.hint %}
+			<div class="c-hint">{{ data.hint }}</div>
+		{% endif %}
+	</div>
+{% endmacro %}
+
+{% macro toggle(data, modifier) %}
+	{% if disabled %}
+		{% set disabled = "disabled" %}
+	{% endif %}
+	<div class="o-form-element">
+		<label for="{{ data.id }}" class="c-toggle {{ modifier }}">
+			{{ data.label }}
+			<input {{ disabled }} id="{{ data.id }}" type="checkbox" checked>
+			<div class="c-toggle__track">
+				<div class="c-toggle__handle"></div>
+			</div>
+		</label>
+	</div>
+{% endmacro %}
+
+{% macro textarea(modifier, placeholder) %}
+	{% if placeholder %}
+		{% set hasPlaceholder = "placeholder=" + placeholder %}
+	{% endif %}
+	<textarea class="c-field" {{ hasPlaceholder }}></textarea>
+{% endmacro %}
+
+{% macro select(modifier, text) %}
+<select class="c-field">
+  <option>{{ text }}</option>
+</select>
+{% endmacro %}

@@ -1,0 +1,96 @@
+{% macro card(data, modifier, headerModifier, footerModifier, dividerModifier, shadow, src, alt, grouped) %}
+	{% if shadow === 'small' %}
+		{% set shadowClass = 'u-high' %}
+	{% elseif shadow === 'medium' %}
+		{% set shadowClass = 'u-higher' %}
+	{% elseif shadow === 'large' %}
+		{% set shadowClass = 'u-highest' %}
+	{% elseif shadow %}
+		{% set shadowClass = 'u-high' %}
+	{% endif %}
+
+	{% if src %}
+		{% set hasMedia = true %}
+	{% endif %}
+
+	{% if grouped %}
+		{% set isGrouped = true %}
+	{% endif %}
+	
+	<div class="c-card {{ modifier }} {{ shadowClass }} ">
+		{% if hasMedia %}
+			<div class="c-card__item c-card__item--info o-media">
+				<div class="o-media__image">
+					<img class="o-image" alt='{{ alt }}' src="{{ src }}"/>
+				</div>
+				<div class="o-media__body">
+		{% endif %}
+		{% if hasMedia and data.header %}
+			<h2 class="c-heading">{{ data.header }}</h2>
+			{# <h2 class="c-heading">Title <span class="c-heading__sub">Subtitle</span></h2> #}
+		{% endif %}
+		{% if hasMedia %}
+			{% for para in data.paragraphs %}
+				<p class="c-paragraph">
+					{{ para.content | safe }}
+				</p>
+			{% endfor %}
+		{% endif %}
+
+		{% if data.header and not hasMedia %}
+			<div class="c-card__item c-card__item--divider {{ headerModifier }}">{{ data.header }}</div>
+		{% endif %}
+		{% if not hasMedia %}
+			{% for para in data.paragraphs %}
+				
+				{% if para.divider %}
+					{% if grouped %}
+						<div class="c-card__divider"></div>
+					{% else %}
+						<div class="c-card__item c-card__item--divider {{ dividerModifier }}">Divider</div>
+					{% endif %}
+				{% else  %}
+				<div class="c-card__item">
+					<p class="c-paragraph">
+						{{ para.content | safe }}
+					</p>
+				</div>
+				{% endif %}
+				
+			{% endfor %}
+		{% endif %}
+		
+		{% if data.footer %}
+			<div class="c-card__item c-card__item--divider {{ footerModifier }}">{{ data.footer }}</div>
+		{% endif %}
+
+		{% if hasMedia %}
+				</div>
+			</div>
+		{% endif %}
+	</div>
+{% endmacro %}
+
+{% macro media(data, modifier, shadow, src, alt) %}
+	<div class="c-card {{ modifier }} {{ shadow }}">
+		<img class="o-image" alt="{{ alt }}" src="{{ src }}">
+		<header class="c-card__header">
+			<h2 class="c-heading">
+				{{ data.main }}
+				<div class="c-heading__sub">{{ data.sub }}</div>
+			</h2>
+		</header>
+		<div class="c-card__body">
+			{% for para in data.paragraphs %}
+				{{ para.content | safe }}
+			{% endfor %}
+		</div>
+		<footer class="c-card__footer">
+			<div class="c-input-group">
+				<button class="c-button c-button--brand c-button--block c-button--ghost-brand">Buy</button>
+				<button class="c-button c-button--block c-button--ghost-brand">Buy</button>
+				<button class="c-button c-button--block c-button--ghost-brand">Buy</button>
+				<brand>
+		</footer>
+	</div>
+{% endmacro %}

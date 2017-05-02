@@ -1,0 +1,12 @@
+{% macro alert(modifier) %}
+	<div class="c-alert {{ modifier }}">
+		Default
+	</div>
+{% endmacro %}
+
+{% macro alertDismiss(modifier) %}
+	<div class="c-alert {{ modifier }}">
+		<button class="c-button c-button--close">×</button>
+		Default
+	</div>
+{% endmacro %}

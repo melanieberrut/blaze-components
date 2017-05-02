@@ -1,0 +1,12 @@
+{# Default position: buble going top  #}
+
+{% macro bubble(modifier) %}
+	{% if modifier %}
+		{% set bubbleDirection = modifier %}
+	{% else %}
+		{% set bubbleDirection = 'c-bubble--top' %}
+	{% endif %}
+	<div class="c-bubble {{ bubbleDirection }}">
+		This bubble is on the top
+	</div>
+{% endmacro %}

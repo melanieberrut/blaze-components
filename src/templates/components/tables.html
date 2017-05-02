@@ -1,0 +1,51 @@
+{% macro table(data, modifier) %}
+	<table class="c-table {{ modifier }}">
+		<caption class="c-table__caption">{{ data.caption }}</caption>
+		<thead class="c-table__head">
+			<tr class="c-table__row c-table__row--heading">
+				{% for th in data.head.ths %}
+				<td class="c-table__cell">
+					{{ th.th }}
+				</td>
+				{% endfor %}
+			</tr>
+		</thead>
+		<tbody class="c-table__body">
+			{% for tr in data.body.tds %}
+			<tr class="c-table__row">
+				{% for td in data.body.tds %}
+				<td class="c-table__cell">
+					{{ td.td }}
+				</td>
+				{% endfor %}
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endmacro %}
+
+{% macro div(data, modifier) %}
+	<div class="c-table {{ modifier }}">
+		<div class="c-table__caption">{{ data.caption }}</div>
+		<div class="c-table__head">
+			<div class="c-table__row c-table__row--heading">
+				{% for th in data.head.ths %}
+				<div class="c-table__cell">
+					{{ th.th }}
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+		<div class="c-table__body">
+			{% for tr in data.body.tds %}
+			<div class="c-table__row">
+				{% for td in data.body.tds %}
+				<div class="c-table__cell">
+					{{ td.td }}
+				</div>
+				{% endfor %}
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endmacro %}

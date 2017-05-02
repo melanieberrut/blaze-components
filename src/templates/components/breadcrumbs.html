@@ -1,0 +1,17 @@
+{# Loops throught data - if data doesn't have "href" will make the current page  #}
+
+{% macro breadcrumb(breadcrumbs) %}
+	<ol class="c-breadcrumbs">
+		{% for item in breadcrumbs %}
+			{% if item.href %}
+				<li class="c-breadcrumbs__crumb ">
+					<a class="c-link" href="{{ item.href }}">{{ item.title }}</a>
+				</li>
+			{% else %}
+				<li class="c-breadcrumbs__crumb  c-text--loud">
+					<span>{{ item.title }}</span>
+				</li>
+			{% endif %}
+		{% endfor %}
+	</ol>
+{% endmacro %}

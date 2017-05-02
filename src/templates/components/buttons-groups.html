@@ -1,0 +1,41 @@
+{% import 'components/buttons.html' as BUTTONS %}
+{% import 'components/inputs.html' as INPUTS %}
+
+{# if input enabled, default direction: left  #}
+
+{% macro group(hasInput, inputDirection, placeholder, btnModifier1, btnModifier2, groupModifier) %}
+
+	{% if disabled === true %}
+		{% set disabledAttr = 'disabled="true"' %}
+	{% endif %}
+
+	{% if hasInput and not inputDirection %}
+		{% set inputDirection = 'left' %}
+	{% else %}
+		{% set inputDirection = 'right' %}
+	{% endif %}
+
+	<span class="c-input-group {{ groupModifier }}">
+		
+
+		{% if 'left' in inputDirection %}
+			{% if hasInput %}
+				<div class="o-field">
+					{{INPUTS.input(placeholder=placeholder)}}
+				</div>
+			{% else %}
+				{{BUTTONS.button(modifier=btnModifier1)}}
+			{% endif %}
+			{{BUTTONS.button(modifier=btnModifier2)}}
+		{% else %}
+			{{BUTTONS.button(modifier=btnModifier2)}}
+			{% if hasInput %}
+				<div class="o-field">
+					{{INPUTS.input(placeholder=placeholder)}}
+				</div>
+			{% else %}
+				{{BUTTONS.button(modifier=btnModifier1)}}
+			{% endif %}
+		{% endif %}
+	</span>
+{% endmacro %}

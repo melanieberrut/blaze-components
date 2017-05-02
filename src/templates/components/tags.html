@@ -1,0 +1,25 @@
+{% macro tag(data, modifier) %}
+	<div class="c-tags">
+		<span class="c-tags__container">
+			{% for tag in data %}
+				<button type="button" class="c-button c-tag">
+					{{ tag.tag }}
+					<span class="c-tag__close">×</span>
+				</button>
+			{% endfor %}
+		</span>
+	</div>
+{% endmacro %}
+
+{% macro tagSearch(data, modifier) %}
+	<div class="c-tags">
+		<span id="{{ data.id }}" class="c-tags__field-container">
+			<input class="c-field">
+			<ul class="c-card c-card--menu u-higher">
+			{% for tag in data.results %}
+				<li class="c-card__item">{{ tag.tag }}</li>
+			{% endfor %}
+			</ul>
+		</span>
+	</div>
+{% endmacro %}

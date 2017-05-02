@@ -1,0 +1,36 @@
+{# <span class="c-pagination__ellipsis">…</span> #}
+
+{% macro pagination(pagination) %}
+	<div class="c-pagination">
+
+		<div class="c-pagination__controls c-pagination__controls--backward">
+			{% if pagination.showFirst %}
+				<button class="c-pagination__control">«</button>
+			{% endif %}
+			{% if pagination.showPrev %}
+				<button class="c-pagination__control">‹</button>
+			{% endif %}
+		</div>
+
+		<div class="c-pagination__controls">
+			{% for page in pagination.pages %}
+				{% if page.active %}
+					<button class="c-pagination__page c-pagination__page--current">{{ page.page }}</button>
+				{% else %}
+					<button class="c-pagination__page">{{ page.page }}</button>
+				{% endif %}
+			{% endfor %}
+			
+		</div>
+
+		<div class="c-pagination__controls c-pagination__controls--forward">
+			{% if pagination.showNext %}
+				<button class="c-pagination__control">›</button>
+			{% endif %}
+			{% if pagination.showLast %}
+				<button class="c-pagination__control">»</button>
+			{% endif %}
+		</div>
+
+	</div>
+{% endmacro %}
